@@ -63,7 +63,7 @@ def aggregate_by_pos(meth_file,output_file,min_read_depth,mod_threshold):
         a = check_thresh(pos_dict[locus], min_read_depth)
         if a:
             frac = np.mean(pos_dict[locus])
-            if frac > mod_threshold:
+            if frac >= mod_threshold:
                 meth = "m6A"
             else:
                 meth = "A"
