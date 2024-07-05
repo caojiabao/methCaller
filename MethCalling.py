@@ -55,7 +55,7 @@ def main(args):
     if args.model == "bilstm":
         model = BiLSTM_Attention().to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-        model_path = args.model_dir + "/bilstm_attention_1X7_917.pt"
+        model_path = args.model_dir + "/bilstm_promethION_R9.4.1_multi_Motifs.pt"
         load_checkpoint(model_path, model, optimizer)
     else:
         print("model can not empty")
