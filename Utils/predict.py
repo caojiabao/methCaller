@@ -91,7 +91,7 @@ def run_predict(data:str, out_dir:str, args:ArgumentParser, model):
         locks[out_filetype] = multiprocessing.Lock()
 
     with open(out_paths['per_read_methylation'], 'w', encoding='utf-8') as f:
-        f.write('contig,read_index,contig_positon,strand,ref_11mer_sequence,methylation_score,methylation_prediction\n')  # header
+        f.write('contig,read_index,contig_position,strand,ref_11mer_sequence,methylation_score,methylation_prediction\n')  # header
 
     # Create communication queues.
     task_queue = multiprocessing.JoinableQueue(maxsize=args.n_processes * 2)

@@ -1,7 +1,5 @@
 import torch
 import torch.nn as nn
-# from transformers import BertModel, BertTokenizer
-import math
 
 class BiLSTM_Attention(nn.Module):
     def __init__(self, input_dim=64, hidden_dim=128, num_layers=3, output_dim=2, dropout_prob=0.5):
@@ -46,34 +44,7 @@ class BiLSTM_Attention(nn.Module):
         return out
 
 
-# Define transformer model
-class TransformerClassifier(nn.Module):
-    def __init__(self, feature_dim=27, num_classes=2, max_seq_len=6, num_layers=1, hidden_dim=128, num_heads=8, dropout=0.5):
-        super(TransformerClassifier, self).__init__()
-        self.embedding = nn.Linear(feature_dim, hidden_dim)
-        self.positional_encodings = self.generate_positional_encodings(max_seq_len, hidden_dim).to(device)
-        self.transformer_layers = nn.TransformerEncoderLayer(hidden_dim, nhead=num_heads)
-        self.transformer = nn.TransformerEncoder(self.transformer_layers, num_layers=num_layers)
-        self.fc = nn.Linear(hidden_dim * max_seq_len, num_classes)
-
-    def generate_positional_encodings(self, max_seq_len, hidden_dim):
-        position = torch.arange(0, max_seq_len).unsqueeze(1)
-        div_term = torch.exp(torch.arange(0, hidden_dim, 2) * -(math.log(10000.0) / hidden_dim))
-        positional_encodings = torch.zeros((max_seq_len, hidden_dim))
-        positional_encodings[:, 0::2] = torch.sin(position * div_term)
-        positional_encodings[:, 1::2] = torch.cos(position * div_term)
-        return positional_encodings.unsqueeze(0)
-
-    def forward(self, x):
-        batch_size, seq_len, feature_dim = x.size()
-        x = self.embedding(x) + self.positional_encodings[:, :seq_len, :]
-        x = x.permute(1, 0, 2)
-        output = self.transformer(x)
-        output = output.permute(1, 0, 2).reshape(batch_size, -1)
-        logits = self.fc(output)
-        return logits
-
-device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 # device = torch.device("cpu")
 
 def load_checkpoint(load_path, model, optimizer):

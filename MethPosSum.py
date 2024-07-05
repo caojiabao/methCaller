@@ -58,7 +58,7 @@ def aggregate_by_pos(meth_file,output_file,min_read_depth,mod_threshold):
     # print(pos_dict)
 
     outfi = open(output_file, 'w')
-    outfi.write("contig\tpositon\tstrand\tref_11mer_sequence\tdepth_coverage\tfraction\tlabel\n")
+    outfi.write("contig\tposition\tstrand\tref_11mer_sequence\tdepth_coverage\tfraction\tlabel\n")
     for locus in pos_dict.keys():
         a = check_thresh(pos_dict[locus], min_read_depth)
         if a:

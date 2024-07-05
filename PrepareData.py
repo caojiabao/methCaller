@@ -56,7 +56,7 @@ def main(args):
     parallel_preprocess_tx(args.eventalign, args.fasta_file, args.out_dir, args.n_processes, args.readcount_min)
 
 if __name__ == '__main__':
-    # args = argparser().parse_args(["--eventalign","test_data/human_eventalign.tsv","--fasta_file","test_data/test_contigs.fa","--out_dir","test_data"])
+    # args = argparser().parse_args(["--eventalign","test_data/test_eventalign.tsv","--fasta_file","test_data/test_contigs.fa","--out_dir","test_data"])
     args = argparser().parse_args()
     main(args)
 

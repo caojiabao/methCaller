@@ -3,7 +3,7 @@ import torch
 import numpy as np
 from argparse import ArgumentParser
 from argparse import ArgumentDefaultsHelpFormatter
-from Utils.model import BiLSTM_Attention, TransformerClassifier, device, load_checkpoint
+from Utils.model import BiLSTM_Attention, device, load_checkpoint
 from Utils.predict import run_predict
 
 def argparser():
@@ -55,14 +55,10 @@ def main(args):
     if args.model == "bilstm":
         model = BiLSTM_Attention().to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-#        model_path = args.model_dir + "/biLSTM/bilstm_attention_11mer_3X.pt"
         model_path = args.model_dir + "/bilstm_attention_1X7_917.pt"
         load_checkpoint(model_path, model, optimizer)
     else:
-        model = TransformerClassifier().to(device)
-        optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-        model_path = args.model_dir + "/transformer_1x7_917.pth"
-        load_checkpoint(model_path, model, optimizer)
+        print("model can not empty")
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
