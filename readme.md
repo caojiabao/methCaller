@@ -80,7 +80,7 @@ python MethPosSum.py --input_file <results_dir>/results.per_read_methylation --o
 At the end of the program run, five files are generated, of which `results.per_sites_methylation.tsv` is the final result of whether or not methylation occurs at adenine sites in the reference genome.
 ##### The file contains a total of 7 columns:
 1. contig column: the name of the chromosome in the reference genome;
-2. position column: position of adenine in the chromosome (0-based); the
+2. position column: position of adenine in the chromosome (0-based);
 3. strand column: positive and negative strands;
 4. ref_11mer_sequence column: indicates the 11-mer sequence at the position;
 5. depth_coverage column: the sequencing depth of the position;
