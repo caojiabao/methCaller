@@ -89,9 +89,9 @@ At the end of the program run, five files are generated, of which `results.per_s
 
 # Test data
 The reference genome sequence and eventalign results have been saved in the test_data directory.
-##### 1. extraction feature from eventalign results
+##### 1. extraction feature from eventalign results (The --chunk_size parameter should not be smaller than the default value)
 ~~~ 
-python PrepareData.py --eventalign test_data/test_eventalign.tsv --fasta_file test_data/test_contigs.fa --out_dir test_data --n_processes 8 --chunk_size 256
+python PrepareData.py --eventalign test_data/test_eventalign.tsv --fasta_file test_data/test_contigs.fa --out_dir test_data --n_processes 8
 ~~~
 ##### 2. prediction of 6mA methylation using methCaller
 ~~~

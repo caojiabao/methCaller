@@ -79,6 +79,6 @@ def main(args):
 
 
 if __name__=='__main__':
-    args = argparser().parse_args(["--input_file", "test_data/results.per_read_methylation", "--out_file", "test_data/results.per_sites_methylation.tsv"])
-    # args = argparser().parse_args()
+    # args = argparser().parse_args(["--input_file", "test_data/results.per_read_methylation", "--out_file", "test_data/results.per_sites_methylation.tsv"])
+    args = argparser().parse_args()
     main(args)
